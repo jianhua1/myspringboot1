@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jh.myspringboot1.dao.TOrderDao">
+    <select id="getByCondition"  resultType="TOrder">
+         select a.order_id as orderId,a.user_id as userId,a.status,a.create_date_time as createDateTime
+          from torder a
+          <where>
+               <if test="#{userId!=null}">
+                   and a.user_id=#{userId}
+               </if>
+              <if test="#{status}!=null">
+                  and a.status=#{status}
+              </if>
+             <!-- <choose>
+                  <when test="#{userId}!=null">
+                     and a.user_id=#{userId}
+                  </when>
+                  <when test="#{status}!=null">
+                     and a.status=#{status}
+                  </when>
+                  <otherwise>
+
+                  </otherwise>
+              </choose>-->
+          </where>
+    </select>
+
+    <select id="getAll" resultType="TOrder">
+         select order_id as orderId,user_id as userId,status,create_date_time as createDateTime from torder a where 1=2
+
+    </select>
+
+    <insert id="save">
+        insert into torder(order_id,user_id,status,create_date_time) values(#{orderId},#{userId},#{status},now())
+    </insert>
+
+</mapper>
