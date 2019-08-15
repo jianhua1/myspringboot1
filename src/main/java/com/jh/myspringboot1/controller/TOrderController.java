@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @RestController
 public class TOrderController {
@@ -42,6 +43,18 @@ public class TOrderController {
         tOrder.setStatus(status);
         List<TOrder> list=tOrderService.getByCondition(tOrder);
         list.forEach(o->{
+            System.out.println("id:"+o.getOrderId()+" "+o.getUserId()+" "+o.getCreateDateTime());
+        });
+    }
+
+    //http://localhost:8080/by_condition_norest?userId=1&status=save22
+    @GetMapping("/by_condition_norest")
+    public void getByConditionNoRest(Integer userId,String status){
+        TOrder tOrder=new TOrder();
+        tOrder.setUserId(userId);
+        tOrder.setStatus(status);
+        List<TOrder> list=tOrderService.getByCondition(tOrder);
+        list.forEach(o->{
             System.out.println(o.getOrderId()+" "+o.getUserId()+" "+o.getCreateDateTime());
         });
     }
@@ -50,6 +63,7 @@ public class TOrderController {
     @GetMapping(value = "/add_test1")
     public void addTest1(){
         try{
+            CopyOnWriteArrayList list = new CopyOnWriteArrayList();
             TOrder tOrder=new TOrder();
             tOrder.setStatus("false");
             tOrder.setUserId(9995);
@@ -65,11 +79,13 @@ public class TOrderController {
         try{
             TOrder tOrder=new TOrder();
             tOrder.setStatus("false");
-            tOrder.setUserId(9995);
+            tOrder.setUserId(9999);
             tOrderService.addTest2(tOrder);
         }catch (Exception e){
             e.printStackTrace();
         }
     }
+
+
 
 }

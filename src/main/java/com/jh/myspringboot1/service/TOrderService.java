@@ -3,13 +3,9 @@ package com.jh.myspringboot1.service;
 import com.jh.myspringboot1.dao.TOrderDao;
 import com.jh.myspringboot1.modal.TOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.List;
 
 @Service
@@ -27,7 +23,7 @@ public class TOrderService {
     }
 
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class )
     public void addTest2(TOrder tOrder) throws Exception{
             System.out.println("+++++aaaaaaaaa");
             tOrderDao.save(tOrder);
