@@ -10,6 +10,7 @@ mybatis:
 #  config-location: classpath:mybatis-config.xml
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.jh.myspringboot1.modal
+  type-handlers-package: com.jh.myspringboot1.util
 logging:
   level:
     com:

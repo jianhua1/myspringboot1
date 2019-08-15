@@ -1,10 +1,10 @@
 package com.jh.myspringboot1.modal;
 
-import java.sql.Time;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.TimeZone;
+import lombok.Data;
 
+import java.util.Date;
+
+@Data
 public class TOrder {
    private Integer orderId;
    private Integer userId;
@@ -15,7 +15,7 @@ public class TOrder {
         ZoneId defaultZone = ZoneId.systemDefault();
         System.out.println(defaultZone); //此处打印为时区所在城市Asia/Shanghai
     }*/
-    public Integer getOrderId() {
+/*    public Integer getOrderId() {
         return orderId;
     }
 
@@ -45,5 +45,5 @@ public class TOrder {
 
     public void setCreateDateTime(Date createDateTime) {
         this.createDateTime = createDateTime;
-    }
+    }*/
 }

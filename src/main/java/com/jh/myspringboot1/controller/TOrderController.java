@@ -38,12 +38,13 @@ public class TOrderController {
     //http://localhost:8080/by_condition/1/save22
     @GetMapping(value = "/by_condition/{userId}/{status}")
     public void getByCondition(@PathVariable Integer userId,@PathVariable String status){
+
         TOrder tOrder=new TOrder();
         tOrder.setUserId(userId);
         tOrder.setStatus(status);
         List<TOrder> list=tOrderService.getByCondition(tOrder);
         list.forEach(o->{
-            System.out.println("id:"+o.getOrderId()+" "+o.getUserId()+" "+o.getCreateDateTime());
+            System.out.println("id:"+o.getOrderId()+" "+o.getUserId()+" "+o.getCreateDateTime()+" "+o.getStatus());
         });
     }
 
